@@ -44,7 +44,7 @@
     [:form
      {:on-submit (fn [^js/Event e]
                    (.preventDefault e)
-                   (run-process))}
+                   (run-process))} 
      [:input#command
       {:type :text
        :on-change (fn [^js/Event e]
@@ -52,7 +52,17 @@
                             ^js/String (.-value (.-target e))))
        :value @command
        :placeholder "type in shell command"}]]]
-   [:pre (join-lines (take 100 (reverse (split-lines @shell-result))))]])
+;;    <audio controls>
+;;   <source src="horse.ogg" type="audio/ogg">
+;;   <source src="horse.mp3" type="audio/mpeg">
+;;   Your browser does not support the audio tag.
+;; </audio>
+   [:img {:src "file:///Users/marianboda/Downloads/_bandcamp/MURGRIND - [2020] BUNDLE SECTION - Three Emperors & Skringir/cover.jpg"}]
+   [:audio {:controls true}
+    [:source {:src "file:///Users/marianboda/Downloads/_bandcamp/MURGRIND - [2020] BUNDLE SECTION - Three Emperors & Skringir/02 Murgrind - Riding with the Banner in the Sky.mp3" :type "audio/mp3"}]
+    "no audio support for you"]
+   [:pre (join-lines (take 100 (reverse (split-lines @shell-result))))]]
+   )
 
 (reagent/render
   [root-component]
